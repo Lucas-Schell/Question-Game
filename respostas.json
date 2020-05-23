@@ -1,55 +1,55 @@
 {
-  "easy": {
-    "1": {
+  "0": {
+    "0": {
       "pergunta": "O protocolo ___ garante a confiabilidade da transmissão de dados.",
       "respostas": "A.TCP B.UDP C.DHCP D.Confiança E.HTTPS",
       "gabarito": "A"
     },
-    "2": {
+    "1": {
       "pergunta": "Qual dessas NÃO fazem parte da arquitetura da internet:",
       "respostas": "A.SMTP B.RARP C.UDP D.DNS E.HSBC",
       "gabarito": "E"
     },
-    "3": {
+    "2": {
       "pergunta": "Uma máscara de rede 255.255.255.0 faz parte de qual classe?",
       "respostas": "A.C B.D C.A D.B E.E",
       "gabarito": "A"
     },
-    "4": {
+    "3": {
       "pergunta": "A ferramenta WireShark utilizada durante as aulas serve para:",
       "respostas": "A.Verificar a conexão do Wi-Fi B.Hackear a NASA C.Poder observar o fluxo de pacotes D.Deixar as aulas de LabRedes mais fáceis E.Ocupar espaço no computador",
       "gabarito": "C"
     }
   },
-  "normal": {
-    "1": {
+  "1": {
+    "0": {
       "pergunta": "O termo Zona se refere ao que?",
       "respostas": "A.A porção de informações contidas no DNS    B.A area onde ocorre transferencias por HTTP  C. O meu código D.Nome dado ao domínio de informações em um protocolo E.A confiabilidade de transmissão de dados no protocolo TCP",
       "gabarito": "A"
     },
-    "2": {
+    "1": {
       "pergunta": "Tanto o POP como HTTPS fazem parte de:",
       "respostas": "A.SNMP  B.TCP C.DNS  D.UDP E.ABC",
       "gabarito": "B"
     },
-    "3": {
+    "2": {
       "pergunta": "Um ACK reage de qual forma quando um pacote é perdido?",
       "respostas": "A.Ele fica confuso e triste B. Ele tenta recuperá-lo dentro dos arquivos C.Ele é perdido também, assim não houvendo confirmação de chegada D.Ele reenvia o mesmo pacote E.Ele se duplica, assim recebendo ACKS duplicados",
       "gabarito": "D"
     }
   },
-  "hard": {
-    "1": {
+  "2": {
+    "0": {
       "pergunta": "Um roteamento dinâmico:",
       "respostas": "Tem suas rotas definidas durante a inicialização B.Tem suas rotas definidas depois da inicialização C.Tenta mudar suas decisões de roteamento de acordo com o trafico D. Tenta mudar o menos possível suas decisões de roteamento E.Muda suas decisões dinamicamente de acordo com seu âmbito",
       "gabarito": "C"
     },
-    "2": {
+    "1": {
       "pergunta": "Um Vetor de Distância tem como problema:",
       "respostas": "Não é bem otimizado B.Ele possui convergência lenta C.Ele tem loops de roteamento permanentes D.Ele reage pouco a boas e más notícias E. Ele não funciona",
       "gabarito": "B"
     },
-    "3": {
+    "2": {
       "pergunta": "Subgrupo lógico criado por software sem precisar mover e separar fisicamente dispositivos:",
       "respostas": "A.LAN B.VLAN C.Switches D.Hubs E.Repetidores",
       "gabarito": "B"
