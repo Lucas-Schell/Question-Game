@@ -26,13 +26,15 @@ class Client {
 
 
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-
+                System.out.println("antes");
                 clientSocket.receive(receivePacket);
-                if ((receivePacket.getData() + "").equals("Escolha a dificuldade: (0-facil, 1-medio, 2-dificil)")) {
+                String[] str = new String(receivePacket.getData()).split(" ");
+                System.out.println("depois"+ new String(receivePacket.getData()));
+                if (str[0].equals("Escolha")) {
 
 
                     // requisita-se a dificuldade
-                    System.out.println(receivePacket.getData());
+                    System.out.println(new String(receivePacket.getData()));
 
                     // le uma linha do teclado
                     String sentence = inFromUser.readLine();
@@ -44,7 +46,7 @@ class Client {
                     clientSocket.send(receivePacket);
                 }
                 // verifica se o jogo terminou
-                if ((receivePacket.getData() + "").equals("end")) {
+                if ((new String(receivePacket.getData())).equals("end")) {
 
                     // verifica se o jogador quer outra partida
                     // assim garantindo se devera fechar o socket e retornar ou permanecer ativo
