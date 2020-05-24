@@ -1,9 +1,16 @@
+import java.net.InetAddress;
+
 public class Player {
 
     private String name;
     private int points;
-    public Player(String name){
+    private InetAddress ip;
+    private int port;
+
+    public Player(String name, InetAddress ip, int port){
         this.name = name;
+        this.ip = ip;
+        this.port = port;
         points = 0;
     }
 
