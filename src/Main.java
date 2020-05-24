@@ -10,21 +10,26 @@ import java.util.Random;
 
 public class Main {
 
+    // variaveis globais da classe
     private static ArrayList<Player> players;
     private static DatagramSocket serverSocket;
     private static Game game;
 
+    // comeco da execucao do codigo
     public static void main(String[] args) throws IOException, InterruptedException, ParseException {
         while (true) {
             init();
         }
     }
 
+    // inicializacao do jogo
     public static void init() throws IOException, InterruptedException, ParseException {
-        System.out.println("Agurdando jogadores...");
+        // instancia-se um array de jogadores, armazenando-os ao entrarem
+        System.out.println("Aguardando jogadores...");
         players = new ArrayList<>();
         start();
 
+        // caso nao haja jogadores, a aplicacao se desliga
         game = new Game(players);
         if (players.size() == 0) {
             serverSocket.close();
@@ -119,6 +124,7 @@ public class Main {
         }
     }
 
+    
     public static void start() throws IOException, InterruptedException {
         serverSocket = new DatagramSocket(9876);
 
