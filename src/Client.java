@@ -6,14 +6,14 @@ import java.net.*;// DatagramaSocket,InetAddress,DatagramaPacket
 
 class Client {
 
-    DatagramSocket clientSocket;
-    byte[] sendData;
-    byte[] receiveData;
+    private static DatagramSocket clientSocket;
+    private static byte[] sendData;
+    private static byte[] receiveData;
 
 
-    public void main(String args[]) throws Exception {
+    public static void main(String args[]) throws Exception {
         // declara socket cliente
-        DatagramSocket clientSocket = new DatagramSocket(9876);
+        clientSocket = new DatagramSocket();
 
         byte[] sendData = new byte[1024];
         byte[] receiveData = new byte[1024];
@@ -71,11 +71,11 @@ class Client {
     }
 
     // metodo onde cada resposta sera respondida
-    public void newQuestion(DatagramPacket data) {
+    public static void newQuestion(DatagramPacket data) {
 
     }
 
-    public void startPlaying() throws IOException {
+    public static void startPlaying() throws IOException {
         // cria o stream do teclado
         BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 

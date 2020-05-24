@@ -31,15 +31,14 @@ public class Game {
         return question;
     }
 
-    public void addPoints(ArrayList<String> answers, int dif) {
+    public void addPoints(ArrayList<String[]> answers, int dif) {
         int points = difPoints[dif];
 
-        for (String str : answers) {
-            String[] ans = str.split(" ");
-            if (qustionCorrect.equalsIgnoreCase(ans[0])) {
-                Player p = getPlayer(ans[1]);
+        for (String[] str : answers) {
+            if (qustionCorrect.equalsIgnoreCase(str[0])) {
+                Player p = getPlayer(str[1]);
                 if (p != null) {
-                    getPlayer(ans[1]).addPoints(points);
+                    getPlayer(str[1]).addPoints(points);
                     points--;
                 }
             }

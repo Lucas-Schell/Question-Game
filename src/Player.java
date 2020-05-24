@@ -4,9 +4,10 @@ public class Player {
 
     private String name;
     private int points;
-    private InetAddress ip;
-    private int port;
 
+    private InetAddress ip;
+
+    private int port;
     public Player(String name, InetAddress ip, int port){
         this.name = name;
         this.ip = ip;
@@ -16,6 +17,14 @@ public class Player {
 
     public void addPoints(int pts){
         points += pts;
+    }
+
+    public InetAddress getIp() {
+        return ip;
+    }
+
+    public int getPort() {
+        return port;
     }
 
     public int getPoints(){
