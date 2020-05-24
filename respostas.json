@@ -1,57 +1,57 @@
 {
   "0": {
     "0": {
-      "pergunta": "O protocolo ___ garante a confiabilidade da transmissão de dados.",
-      "respostas": "A.TCP B.UDP C.DHCP D.Confiança E.HTTPS",
+      "pergunta": "\nO protocolo ___ garante a confiabilidade da transmissão de dados.\n",
+      "respostas": "A.TCP \nB.UDP \nC.DHCP \nD.Confiança \nE.HTTPS",
       "gabarito": "A"
     },
     "1": {
-      "pergunta": "Qual dessas NÃO fazem parte da arquitetura da internet:",
-      "respostas": "A.SMTP B.RARP C.UDP D.DNS E.HSBC",
+      "pergunta": "\nQual dessas NÃO fazem parte da arquitetura da internet:\n",
+      "respostas": "A.SMTP \nB.RARP \nC.UDP \nD.DNS \nE.HSBC",
       "gabarito": "E"
     },
     "2": {
-      "pergunta": "Uma máscara de rede 255.255.255.0 faz parte de qual classe?",
-      "respostas": "A.C B.D C.A D.B E.E",
+      "pergunta": "\nUma máscara de rede 255.255.255.0 faz parte de qual classe?\n",
+      "respostas": "A.C \nB.D \nC.A \nD.B \nE.E",
       "gabarito": "A"
     },
     "3": {
-      "pergunta": "A ferramenta WireShark utilizada durante as aulas serve para:",
-      "respostas": "A.Verificar a conexão do Wi-Fi B.Hackear a NASA C.Poder observar o fluxo de pacotes D.Deixar as aulas de LabRedes mais fáceis E.Ocupar espaço no computador",
+      "pergunta": "\nA ferramenta WireShark utilizada durante as aulas serve para:\n",
+      "respostas": "A.Verificar a conexão do Wi-Fi \nB.Hackear a NASA \nC.Poder observar o fluxo de pacotes \nD.Deixar as aulas de LabRedes mais fáceis \nE.Ocupar espaço no computador",
       "gabarito": "C"
     }
   },
   "1": {
     "0": {
-      "pergunta": "O termo Zona se refere ao que?",
-      "respostas": "A.A porção de informações contidas no DNS    B.A area onde ocorre transferencias por HTTP  C. O meu código D.Nome dado ao domínio de informações em um protocolo E.A confiabilidade de transmissão de dados no protocolo TCP",
+      "pergunta": "\nO termo Zona se refere ao que?\n",
+      "respostas": "\nA.A porção de informações contidas no DNS    \nB.A area onde ocorre transferencias por HTTP  \nC. O meu código \nD.Nome dado ao domínio de informações em um protocolo \nE.A confiabilidade de transmissão de dados no protocolo TCP",
       "gabarito": "A"
     },
     "1": {
-      "pergunta": "Tanto o POP como HTTPS fazem parte de:",
-      "respostas": "A.SNMP  B.TCP C.DNS  D.UDP E.ABC",
+      "pergunta": "\nTanto o POP como HTTPS fazem parte de:\n",
+      "respostas": "A.SNMP  \nB.TCP \nC.DNS  \nD.UDP \nE.ABC",
       "gabarito": "B"
     },
     "2": {
-      "pergunta": "Um ACK reage de qual forma quando um pacote é perdido?",
-      "respostas": "A.Ele fica confuso e triste B. Ele tenta recuperá-lo dentro dos arquivos C.Ele é perdido também, assim não houvendo confirmação de chegada D.Ele reenvia o mesmo pacote E.Ele se duplica, assim recebendo ACKS duplicados",
+      "pergunta": "\nUm ACK reage de qual forma quando um pacote é perdido?\n",
+      "respostas": "A.Ele fica confuso e triste \nB. Ele tenta recuperá-lo dentro dos arquivos \nC.Ele é perdido também, assim não houvendo confirmação de chegada \nD.Ele reenvia o mesmo pacote \nE.Ele se duplica, assim recebendo ACKS duplicados",
       "gabarito": "D"
     }
   },
   "2": {
     "0": {
-      "pergunta": "Um roteamento dinâmico:",
-      "respostas": "Tem suas rotas definidas durante a inicialização B.Tem suas rotas definidas depois da inicialização C.Tenta mudar suas decisões de roteamento de acordo com o trafico D. Tenta mudar o menos possível suas decisões de roteamento E.Muda suas decisões dinamicamente de acordo com seu âmbito",
+      "pergunta": "\nUm roteamento dinâmico:\n",
+      "respostas": "Tem suas rotas definidas durante a inicialização \nB.Tem suas rotas definidas depois da inicialização \nC.Tenta mudar suas decisões de roteamento de acordo com o trafico \nD.Tenta mudar o menos possível suas decisões de roteamento \nE.Muda suas decisões dinamicamente de acordo com seu âmbito",
       "gabarito": "C"
     },
     "1": {
-      "pergunta": "Um Vetor de Distância tem como problema:",
-      "respostas": "Não é bem otimizado B.Ele possui convergência lenta C.Ele tem loops de roteamento permanentes D.Ele reage pouco a boas e más notícias E. Ele não funciona",
+      "pergunta": "\nUm Vetor de Distância tem como problema:\n",
+      "respostas": "Não é bem otimizado \nB.Ele possui convergência lenta \nC.Ele tem loops de roteamento permanentes \nD.Ele reage pouco a boas e más notícias \nE. Ele não funciona",
       "gabarito": "B"
     },
     "2": {
-      "pergunta": "Subgrupo lógico criado por software sem precisar mover e separar fisicamente dispositivos:",
-      "respostas": "A.LAN B.VLAN C.Switches D.Hubs E.Repetidores",
+      "pergunta": "\nSubgrupo lógico criado por software sem precisar mover e separar fisicamente dispositivos:\n",
+      "respostas": "A.LAN \nB.VLAN \nC.Switches \nD.Hubs \nE.Repetidores",
       "gabarito": "B"
     }
   }

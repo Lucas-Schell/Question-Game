@@ -16,7 +16,6 @@ class Client {
         clientSocket = new DatagramSocket();
 
         byte[] sendData = new byte[1024];
-        byte[] receiveData = new byte[1024];
         BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
@@ -24,12 +23,11 @@ class Client {
             startPlaying();
             while (true) {
 
-
+                byte[] receiveData = new byte[1024];
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                System.out.println("antes");
+                System.out.println("Agardando servidor...");
                 clientSocket.receive(receivePacket);
                 String[] str = new String(receivePacket.getData()).split(" ");
-                System.out.println("depois"+ new String(receivePacket.getData()));
                 if (str[0].equals("Escolha")) {
 
 
@@ -44,30 +42,35 @@ class Client {
 
                     //envia o pacote
                     clientSocket.send(receivePacket);
-                }
-                // verifica se o jogo terminou
-                if ((new String(receivePacket.getData())).equals("end")) {
+                } else {
+                    // verifica se o jogo terminou
+                    if (str[0].equals("Fim")) {
 
-                    // verifica se o jogador quer outra partida
-                    // assim garantindo se devera fechar o socket e retornar ou permanecer ativo
-                    System.out.println("Obrigado por jogar!");
-                    System.out.println("Gostaria de jogar novamente?");
-                    System.out.println("Se não, digite 0");
+                        // verifica se o jogador quer outra partida
+                        // assim garantindo se devera fechar o socket e retornar ou permanecer ativo
+                        System.out.println((new String(receivePacket.getData())));
+                        System.out.println("Obrigado por jogar!");
+                        System.out.println("Gostaria de jogar novamente?");
+                        System.out.println("Sim - 1, Nao - 0");
 
-                    String sentence = inFromUser.readLine();
+                        String sentence = inFromUser.readLine();
 
-                    if(sentence.equals("0")){
-                        // fecha o cliente
-                        clientSocket.close();
-                        return;
+                        if (sentence.equals("0")) {
+                            // fecha o cliente
+                            clientSocket.close();
+                            return;
+                        }
+
+                        break;
+                    } else {
+                        if (str[0].equals("Resposta")) {
+                            System.out.println((new String(receivePacket.getData())));
+                        } else {
+                            // chama um metodo para responder questoes
+                            newQuestion(receivePacket, inFromUser);
+                        }
                     }
-
-                    break;
                 }
-                // chama um metodo para responder questoes
-                newQuestion(receivePacket, inFromUser);
-
-
             }
         }
     }

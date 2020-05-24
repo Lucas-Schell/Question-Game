@@ -1,3 +1,5 @@
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -10,18 +12,24 @@ public class Main {
 
     private static ArrayList<Player> players;
     private static DatagramSocket serverSocket;
-    private Game game;
+    private static Game game;
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, ParseException {
         while (true) {
             init();
         }
     }
 
-    public static void init() throws IOException, InterruptedException {
+    public static void init() throws IOException, InterruptedException, ParseException {
         System.out.println("Agurdando jogadores...");
         players = new ArrayList<>();
         start();
+
+        game = new Game(players);
+        if (players.size() == 0) {
+            serverSocket.close();
+            return;
+        }
         System.out.println("dif" + players.get(0).getIp() + " " + players.get(0).getPort());
         byte[] sendData = "Escolha a dificuldade: (0-facil, 1-medio, 2-dificil)".getBytes();
         DatagramPacket packet = new DatagramPacket(sendData, sendData.length, players.get(0).getIp(), players.get(0).getPort());
@@ -34,17 +42,24 @@ public class Main {
         serverSocket.setSoTimeout(10000);
         try {
             serverSocket.receive(packet);
-            dif = Integer.parseInt(packet.getData() + "");
+            String s = (new String(packet.getData())).charAt(0) + "";
+            dif = Integer.parseInt(s);
         } catch (Exception e) {
         }
 
         play(questionOrder(dif));
     }
 
-    public static void play(ArrayList<String[]> questions) throws SocketException {
-        ArrayList<String[]> answers = new ArrayList<>();
+    public static void play(ArrayList<String[]> questions) throws IOException, InterruptedException, ParseException {
         for (String[] str : questions) {
+            ArrayList<String[]> answers = new ArrayList<>();
+            String q = game.getQuestion(str[0], str[1]);
             serverSocket.setSoTimeout(10000);
+            for (Player p : players) {
+                byte[] sendData = q.getBytes();
+                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, p.getIp(), p.getPort());
+                serverSocket.send(sendPacket);
+            }
 
             try {
                 while (answers.size() < players.size()) {
@@ -63,10 +78,33 @@ public class Main {
                         }
                     }).start();
                 }
-            } catch (Exception e) {
+            } catch (Exception ignored) {
 
             }
+
+            for (Player p : players) {
+                String msg = "Resposta correta: " + game.getCorrect();
+                byte[] sendData = msg.getBytes();
+                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, p.getIp(), p.getPort());
+                serverSocket.send(sendPacket);
+            }
+
+            game.addPoints(answers, Integer.parseInt(str[0]));
         }
+
+        System.out.println("fim");
+        String msg = "Fim \n";
+        for (Player p : game.score()) {
+            System.out.println(p.getPoints() + " " + p.getName());
+            msg += p.getPoints() + " " + p.getName() + "\n";
+        }
+        byte[] sendData = msg.getBytes();
+        for (Player p : players) {
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, p.getIp(), p.getPort());
+            serverSocket.send(sendPacket);
+        }
+        serverSocket.close();
+        Thread.sleep(5000);
     }
 
     public static void answer(DatagramPacket packet, ArrayList<String[]> answers) {
@@ -85,7 +123,6 @@ public class Main {
         serverSocket = new DatagramSocket(9876);
 
         serverSocket.setSoTimeout(15000);
-        System.out.println("k");
         try {
             while (players.size() < 3) {
                 byte[] receiveData = new byte[1024];
