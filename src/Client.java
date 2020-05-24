@@ -65,7 +65,7 @@ class Client {
                     break;
                 }
                 // chama um metodo para responder questoes
-                newQuestion(receivePacket);
+                newQuestion(receivePacket, inFromUser);
 
 
             }
@@ -73,7 +73,21 @@ class Client {
     }
 
     // metodo onde cada resposta sera respondida
-    public static void newQuestion(DatagramPacket data) {
+    public static void newQuestion(DatagramPacket data, BufferedReader keyboard) throws IOException {
+
+        // mostra a pergunta junto das respostas
+        // tambem requisita a resposta do jogador
+        System.out.println((new String(data.getData())));
+        System.out.println("Digite apenas a letra correspondente a resposta abaixo:");
+
+        // converte a resposta obtida em bytes para envio
+        String sentence = keyboard.readLine();
+        sendData = sentence.getBytes();
+
+        // envia a resposta adquirida
+        data = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("localhost"), 9876);
+        clientSocket.send(data);
+
 
     }
 
