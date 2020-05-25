@@ -84,14 +84,19 @@ class Client {
         System.out.println("Digite apenas a letra correspondente a resposta abaixo:");
 
         // converte a resposta obtida em bytes para envio
+        long startTime = System.currentTimeMillis();
+        while ((System.currentTimeMillis() - startTime) < 10000
+                && !keyboard.ready()) {
+        }
+        if (!keyboard.ready()) {
+            return;
+        }
         String sentence = keyboard.readLine();
         sendData = sentence.getBytes();
 
         // envia a resposta adquirida
         data = new DatagramPacket(sendData, sendData.length, InetAddress.getByName("localhost"), 9876);
         clientSocket.send(data);
-
-
     }
 
     public static void startPlaying() throws IOException {

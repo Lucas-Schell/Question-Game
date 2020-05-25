@@ -98,6 +98,7 @@ public class Main {
             System.out.println(p.getPoints() + " " + p.getName());
             msg += p.getPoints() + " " + p.getName() + "\n";
         }
+        System.out.println(msg);
         byte[] sendData = msg.getBytes();
         for (Player p : players) {
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, p.getIp(), p.getPort());
