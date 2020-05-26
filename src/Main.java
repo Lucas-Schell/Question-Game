@@ -35,6 +35,8 @@ public class Main {
             serverSocket.close();
             return;
         }
+
+        // Envia ao primeiro jogador que entra na sala a mensagem de escolha de dificuldade
         System.out.println("dif" + players.get(0).getIp() + " " + players.get(0).getPort());
         byte[] sendData = "Escolha a dificuldade: (0-facil, 1-medio, 2-dificil)".getBytes();
         DatagramPacket packet = new DatagramPacket(sendData, sendData.length, players.get(0).getIp(), players.get(0).getPort());
@@ -44,6 +46,7 @@ public class Main {
 
         int dif = 1;
 
+        // Aguarada uma resposta por 10 segundos
         serverSocket.setSoTimeout(10000);
         try {
             serverSocket.receive(packet);
@@ -51,10 +54,11 @@ public class Main {
             dif = Integer.parseInt(s);
         } catch (Exception e) {
         }
-
+        // chama o metodo play com as informacoes corretas de dificuldade e questoes
         play(questionOrder(dif));
     }
 
+    // metodo onde o jogo sera jogado
     public static void play(ArrayList<String[]> questions) throws IOException, InterruptedException, ParseException {
         for (String[] str : questions) {
             ArrayList<String[]> answers = new ArrayList<>();
@@ -111,6 +115,7 @@ public class Main {
         Thread.sleep(5000);
     }
 
+    // verifica as respostas do jogador e as guarda em um array, guarando as respostas na ordem de quem as respondeu primeiro
     public static void answer(DatagramPacket packet, ArrayList<String[]> answers) {
         String data = new String(packet.getData());
         int port = packet.getPort();
@@ -123,7 +128,8 @@ public class Main {
         }
     }
 
-    
+
+    // inicia o servidor com uma porta fixa "9876", aguardando os jogadores a entrarem na sala
     public static void start() throws IOException, InterruptedException {
         serverSocket = new DatagramSocket(9876);
 
@@ -150,6 +156,7 @@ public class Main {
         }
     }
 
+    // adiciona um jogador dentro do jogo enquanto não houver 3 jogadores na sala
     private static void addPlayer(DatagramPacket receivePacket) throws InterruptedException {
         if (players.size() >= 3) return;
         String[] data = new String(receivePacket.getData()).split(" ");
@@ -166,6 +173,7 @@ public class Main {
         players.add(p);
     }
 
+    // retorna a ordem de questoes que irao aparecer no jogo, adicionando-as numa lista que será retornada
     public static ArrayList<String[]> questionOrder(int dif) {
         ArrayList<String[]> list = new ArrayList<>();
         Random r = new Random();
