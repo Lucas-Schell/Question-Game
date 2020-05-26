@@ -17,10 +17,12 @@ public class Game {
 
     private String qustionCorrect;
 
+    // metodo construtor da jogo
     public Game(ArrayList<Player> players) {
         this.players = players;
     }
 
+    // retorna uma pergunta com a pergunta, resposta e alternativas
     public String getQuestion(String dif, String index) throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         Object obj = parser.parse(new FileReader("respostas.json"));
@@ -28,6 +30,7 @@ public class Game {
 
         String question;
 
+        // retira do JSON as informacoes necessarias, adicionando-as na String question
         question = (String) ((JSONObject) ((JSONObject) json.get(dif)).get(index)).get("pergunta");
         question += (String) ((JSONObject) ((JSONObject) json.get(dif)).get(index)).get("respostas");
         qustionCorrect = (String) ((JSONObject) ((JSONObject) json.get(dif)).get(index)).get("gabarito");
@@ -35,6 +38,7 @@ public class Game {
         return question;
     }
 
+    // ordena em ordem decrescente por pontuacao todos os jogadores, colocando-os em um ArrayList
     public ArrayList<Player> score() {
         if (players.size() <= 1) return players;
         ArrayList<Player> top = new ArrayList<>();
@@ -68,11 +72,13 @@ public class Game {
         }
         return top;
     }
-
+    
+    // retorna o gabarito da pergunta atual
     public String getCorrect() {
         return qustionCorrect;
     }
 
+    // retorna a leaderboard com todos os jogadores e suas pontuacoes
     public String topScore(){
         String msg = "Fim \n";
         ArrayList<Player> pl = score();
@@ -83,6 +89,9 @@ public class Game {
         return msg;
     }
 
+    /* adiciona pontos aos jogadores que acertam a resposta da pergunta atual
+       o jogador que responder primeiro ganha mais pontos, e os pontos de cada
+       questao varia com a dificuldade da mesma */
     public void addPoints(ArrayList<String[]> answers, int dif) {
         int points = difPoints[dif];
 
@@ -97,6 +106,7 @@ public class Game {
         }
     }
 
+    // procura um certo jogador por nome e o retorna
     private Player getPlayer(String name) {
         for (Player p : players) {
             if (p.getName().equals(name)) {
