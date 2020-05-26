@@ -23,7 +23,7 @@ class Client {
             startPlaying();
             while (true) {
 
-                byte[] receiveData = new byte[1024];
+                byte[] receiveData = new byte[3000];
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                 System.out.println("Agardando servidor...");
                 clientSocket.receive(receivePacket);
@@ -48,8 +48,9 @@ class Client {
 
                         // verifica se o jogador quer outra partida
                         // assim garantindo se devera fechar o socket e retornar ou permanecer ativo
-                        System.out.println((new String(receivePacket.getData())));
-                        System.out.println("Obrigado por jogar!");
+                        String s = new String(receivePacket.getData());
+                        System.out.println(s);
+                        System.out.println("Obrigado por jogar!" + s.length());
                         System.out.println("Gostaria de jogar novamente?");
                         System.out.println("Sim - 1, Nao - 0");
 

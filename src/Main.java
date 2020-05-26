@@ -101,12 +101,10 @@ public class Main {
         String msg = "Fim \n";
         for (Player p : game.score()) {
             System.out.println(p.getPoints() + " " + p.getName());
-            msg += p.getPoints() + " " + p.getName() + "\n";
+            msg += p.getPoints() + " " + p.getName() + " ";
         }
-        System.out.println(msg);
-        byte[] sendData = msg.getBytes();
         for (Player p : players) {
-            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, p.getIp(), p.getPort());
+            DatagramPacket sendPacket = new DatagramPacket(msg.getBytes(), msg.getBytes().length, p.getIp(), p.getPort());
             serverSocket.send(sendPacket);
         }
         serverSocket.close();

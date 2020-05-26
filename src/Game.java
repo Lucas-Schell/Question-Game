@@ -73,6 +73,16 @@ public class Game {
         return qustionCorrect;
     }
 
+    public String topScore(){
+        String msg = "Fim \n";
+        ArrayList<Player> pl = score();
+        for (Player p : pl) {
+            System.out.println(p.getPoints() + " " + p.getName());
+            msg += p.getPoints() + " " + p.getName() + "\n";
+        }
+        return msg;
+    }
+
     public void addPoints(ArrayList<String[]> answers, int dif) {
         int points = difPoints[dif];
 
